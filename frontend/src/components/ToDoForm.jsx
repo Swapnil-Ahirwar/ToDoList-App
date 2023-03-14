@@ -1,7 +1,11 @@
+import './ToDoForm.css';
+
 const ToDoForm = () => {
+
+
     return (
-        <form>
-            <input />
+        <form className='form'>
+            <input placeholder='Enter new ToDo...'  />
         </form>
     );
 }
