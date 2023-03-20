@@ -1,8 +1,15 @@
+import * as actionTypes from '../actions/typeConstant.js'
 
 
 
 
+export const todosReducers = (state = [], action) => {
 
-export const todosReducers = () => {
+    switch(action.type){
+        case actionTypes.ADDNEW_TODO: 
+            return [ action.payload, ...state]; 
     
+        default:
+            return state;
+    }
 }
