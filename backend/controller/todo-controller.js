@@ -1,3 +1,4 @@
+import { request, response } from 'express';
 import Todo from '../model/Todo.js';
 
 
@@ -15,4 +16,14 @@ export const addNewToDo = async (request, response) => {
         return response.status(500).json(error.message);
     }
 
+}
+
+export const getAllTodos = async(request, response) => {
+    try{
+        const todos = await Todo.find({}).sort({ 'createdAt': -1});
+
+        response.status(200).json(todos);
+    }catch(error){
+        return response.status(500).json(error.message);
+    }
 }
