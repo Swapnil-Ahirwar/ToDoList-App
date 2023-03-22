@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTodos } from "../redux/actions";
 import { Todo } from "./Todo";
+import '../App.css';
 
 
 
@@ -21,7 +22,6 @@ export const Todos = () => {
             <ul>
                 {
                     todos.map(todo => (
-                        // <li key={todo._id}>{todo.data}</li>
                         <Todo 
                             key={todo._id}
                             todo={todo}
