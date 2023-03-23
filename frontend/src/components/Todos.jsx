@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllTodos } from "../redux/actions";
+import { deleteTodo, getAllTodos } from "../redux/actions";
 import { Todo } from "./Todo";
 import '../App.css';
 import { ALL_TODOS, DONE_TODOS, ACTIVE_TODOS } from "../redux/actions/typeConstant";
@@ -30,10 +30,24 @@ export const Todos = () => {
         }
     }
 
+    const removeDoneTodos = () => {
+        todos.forEach(({ done, _id }) => {
+            if(done){
+                dispatch(deleteTodo(_id));
+            }
+        })
+    }
+
     return (
         <article>
             <div>
                 <Tabs currentTab={currentTab} />
+                {
+                    todos.some(todo => todo.done)?(
+                        <button onClick={removeDoneTodos} className="button clear">
+                            Remove Done Todos</button>
+                    ): null
+                }
             </div>
             <ul>
                 {
